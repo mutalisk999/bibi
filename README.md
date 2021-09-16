@@ -86,14 +86,6 @@ source ~/.bashrc
 
 mkvirtualenv bibi # rename bibi
 workon bibi # activate bibi env
-
-# set up mongodb # 2.6 version
-# set up redis
-# set up rabbitMQ
-
-# mongod &              # start mongodb
-# redis-server &        # start redis
-# rabbitmq-server &     # start RabbitMQ
 ```
 
 Install dependencies
