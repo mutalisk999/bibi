@@ -66,6 +66,14 @@ sudo apt-get update
 sudo apt-get install python3-pip python3-dev
 sudo apt-get install build-essential libssl-dev libffi-dev python-dev
 
+sudo apt-get install mongodb-server redis-server redis-tools rabbitmq-server
+
+# ubuntu 16.04
+sudo apt-get install libssl-dev
+
+# ubuntu 18.04 or later
+sudo apt-get install libssl1.0-dev
+
 #安装virtualenv
 sudo pip3 install virtualenv virtualenvwrapper
 echo "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3" >> ~/.bashrc
@@ -77,14 +85,6 @@ source ~/.bashrc
 
 mkvirtualenv bibi # bibi可随便改成你的项目名
 workon bibi # 现在已进入项目的独立环境
-
-# 安装 mongodb 略  (请安装mongodb 2.6版本)
-# 安装 redis 略
-# 安装 rabbitMQ 略
-
-mongod &              # 启动mongodb
-redis-server &        # 启动redis
-rabbitmq-server &     # 启动RabbitMQ
 ```
 
 安装依赖
