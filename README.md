@@ -153,7 +153,7 @@ sudo systemctl status gunicorn.service
 To reload gunicorn after config change
 ```
 sudo systemctl daemon-reload
-sudo systemctl restart gunicorn
+sudo systemctl restart gunicorn.service
 ```
 
 Create nginx config
@@ -174,10 +174,10 @@ server {
   }
 ```
 
-Start supervisor, nginx
+Start gunicorn service, nginx
 ```bash
-sudo supervisorctl reload
-sudo supervisorctl start bibi
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn.service
 
 sudo service nginx restart
 ```
