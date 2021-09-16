@@ -122,24 +122,39 @@ sudo apt-get install supervisor
 # set up gunicorn
 pip3 install gunicorn
 ```
-Create supervisor config
 
-`sudo vim /etc/supervisor/conf.d/bibi.conf`
-```
-[program:bibi]
-command=/root/Env/bibi/bin/gunicorn
-    -w 3
-    -b 0.0.0.0:8080
-    --log-level debug
-    "application.app:create_app()"
+Create service config
 
-directory=/opt/py-maybi/                                       ; Project dir
-autostart=false
-autorestart=false
-stdout_logfile=/opt/logs/gunicorn.log                          ; log dir
-redirect_stderr=true
+`sudo vi /etc/systemd/system/gunicorn.service`
+
 ```
-PS: -w  the workers number，formula：（CPUs*2 + 1)
+[Unit]
+Description=gunicorn service
+After=network.target
+
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/bibi
+ExecStart=/home/ubuntu/Env/bibi/bin/gunicorn --access-logfile - --workers 3 --bind 127.0.0.1:8080 application:create_app
+
+[Install]
+WantedBy=multi-user.target
+```
+PS: --workers  the workers number，formula：（CPUs*2 + 1)
+
+To enable gunicorn service
+```
+sudo systemctl enable gunicorn.service
+sudo systemctl start gunicorn.service
+sudo systemctl status gunicorn.service
+```
+
+To reload gunicorn after config change
+```
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn
+```
 
 Create nginx config
 
