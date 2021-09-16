@@ -6,18 +6,18 @@ This project provides backend service, based on Flask, MongoDB, Redis, Celery, R
 
 Bibi offers fullstack solution for use with the following:
 
-> [bibi-frontend](https://github.com/seasonstar/bibi-frontend) Mobile web frontend
+> [bibi-frontend](https://github.com/mutalisk999/bibi-frontend) Mobile web frontend
 
-> [bibi-ionic](https://github.com/seasonstar/bibi-ionic) Hybrid APP
+> [bibi-ionic](https://github.com/mutalisk999/bibi-ionic) Hybrid APP
 
-* 可观看[中文文档](https://github.com/seasonstar/bibi/blob/master/README_zh.md)
+* 可观看[中文文档](https://github.com/mutalisk999/bibi/blob/master/README_zh.md)
 
 ----------------
 
 **Features**：
 
 - [x] User
-    - [x] Supports Email, Wechat, Weibo, QQ, and Facebook Oauth，[social-oauth](https://github.com/seasonstar/social-oauth) for details
+    - [x] Supports Email, Wechat, Weibo, QQ, and Facebook Oauth，[social-oauth](https://github.com/mutalisk999/social-oauth) for details
     - [x] User Information, Address, Contact, Favor collections and etc..
 - [x] Social
     - [x] Post, like, comment, and bad information report.
