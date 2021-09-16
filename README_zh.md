@@ -174,10 +174,10 @@ server {
   }
 ```
 
-接着启动 gunicorn, nginx
+接着启动 gunicorn服务, nginx
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl restart gunicorn
+sudo systemctl restart gunicorn.service
 
 sudo service nginx restart
 ```
