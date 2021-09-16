@@ -122,24 +122,39 @@ sudo apt-get install supervisor
 # 安装 gunicorn
 pip3 install gunicorn
 ```
-创建supervisor配置
 
-`sudo vim /etc/supervisor/conf.d/bibi.conf`
+创建gunicorn服务配置
+
+`sudo vi /etc/systemd/system/gunicorn.service`
+
 ```
-[program:bibi]
-command=/root/Env/bibi/bin/gunicorn
-    -w 3
-    -b 0.0.0.0:8080
-    --log-level debug
-    "application.app:create_app()"
+[Unit]
+Description=gunicorn service
+After=network.target
 
-directory=/opt/py-maybi/                                       ; 你的项目代码目录
-autostart=false                                                ; 是否自动启动
-autorestart=false                                              ; 是否自动重启
-stdout_logfile=/opt/logs/gunicorn.log                          ; log 日志
-redirect_stderr=true
+[Service]
+User=ubuntu
+Group=www-data
+WorkingDirectory=/home/ubuntu/bibi
+ExecStart=/home/ubuntu/Env/bibi/bin/gunicorn --access-logfile - --workers 3 --bind 127.0.0.1:8080 application:create_app
+
+[Install]
+WantedBy=multi-user.target
 ```
 PS: 上面 -w 为 开启workers数，公式：（系统内核数*2 + 1)
+
+启用gunicorn服务
+```
+sudo systemctl enable gunicorn.service
+sudo systemctl start gunicorn.service
+sudo systemctl status gunicorn.service
+```
+
+重新加载gunicorn服务
+```
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn
+```
 
 创建nginx配置
 
@@ -159,10 +174,10 @@ server {
   }
 ```
 
-接着启动 supervisor, nginx
+接着启动 gunicorn, nginx
 ```bash
-sudo supervisorctl reload
-sudo supervisorctl start bibi
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn
 
 sudo service nginx restart
 ```
