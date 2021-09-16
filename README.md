@@ -67,6 +67,14 @@ sudo apt-get update
 sudo apt-get install python3-pip python3-dev
 sudo apt-get install build-essential libssl-dev libffi-dev python-dev
 
+sudo apt-get install mongodb-server redis-server redis-tools rabbitmq-server
+
+# ubuntu 16.04
+sudo apt-get install libssl-dev
+
+# ubuntu 18.04 or later
+sudo apt-get install libssl1.0-dev
+
 # set up virtualenv
 sudo pip3 install virtualenv virtualenvwrapper
 echo "export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3" >> ~/.bashrc
@@ -83,9 +91,9 @@ workon bibi # activate bibi env
 # set up redis
 # set up rabbitMQ
 
-mongod &              # start mongodb
-redis-server &        # start redis
-rabbitmq-server &     # start RabbitMQ
+# mongod &              # start mongodb
+# redis-server &        # start redis
+# rabbitmq-server &     # start RabbitMQ
 ```
 
 Install dependencies
