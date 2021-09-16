@@ -153,7 +153,7 @@ sudo systemctl status gunicorn.service
 重新加载gunicorn服务
 ```
 sudo systemctl daemon-reload
-sudo systemctl restart gunicorn
+sudo systemctl restart gunicorn.service
 ```
 
 创建nginx配置
